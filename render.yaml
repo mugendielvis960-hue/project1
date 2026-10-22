@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: vendo-su-marketplace
+    runtime: node
+    plan: free
+    buildCommand: npm ci && npm ci --prefix frontend && npm run build
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: COOKIE_SECURE
+        value: "true"
+      - key: TRUST_PROXY
+        value: "true"
+      - key: MONGODB_URI
+        sync: false
+      - key: ADMIN_PASSWORD
+        sync: false
+      - key: SESSION_SECRET
+        generateValue: true

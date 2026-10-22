@@ -4,21 +4,26 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon backend/server.js"
+    "dev": "nodemon backend/server.js",
+    "start": "node backend/server.js",
+    "build": "npm run build --prefix frontend",
+    "lint": "npm run lint --prefix frontend",
+    "check": "node --check backend/server.js && node --check backend/middleware/auth.js && node --check backend/routes/auth.route.js && node --check backend/controllers/product.controller.js && node --check backend/models/Product.model.js && node --check backend/routes/product.route.js",
+    "test": "node --test"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "module",
+  "engines": {
+    "node": ">=22 <23"
+  },
   "dependencies": {
     "dotenv": "^18.0.6",
     "express": "^5.2.1",
-    "mongoose": "^9.11.0"
+    "mongoose": "^9.11.1"
   },
   "devDependencies": {
     "nodemon": "^3.1.14"
-  },
-  "allowScripts": {
-    "nodemon@1.19.4": true
   }
 }
